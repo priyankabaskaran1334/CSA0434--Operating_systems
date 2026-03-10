@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <fcntl.h>
+#include <unistd.h>
+
+int main()
+{
+    int fd;
+    char buffer[20];
+
+    fd=open("test.txt",O_CREAT|O_RDWR,0777);
+
+    write(fd,"Hello OS Lab",12);
+
+    lseek(fd,0,SEEK_SET);
+
+    read(fd,buffer,12);
+
+    buffer[12]='\0';
+
+    printf("File Content: %s",buffer);
+
+    close(fd);
+}
