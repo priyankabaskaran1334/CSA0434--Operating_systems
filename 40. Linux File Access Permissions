@@ -1,0 +1,24 @@
+#include<stdio.h>
+#include<sys/stat.h>
+
+int main(){
+    struct stat file;
+    stat("sample.txt",&file);
+
+    printf("Owner Permissions:\n");
+    printf("Read: %d\n",(file.st_mode & S_IRUSR) != 0);
+    printf("Write: %d\n",(file.st_mode & S_IWUSR) != 0);
+    printf("Execute: %d\n",(file.st_mode & S_IXUSR) != 0);
+
+    printf("\nGroup Permissions:\n");
+    printf("Read: %d\n",(file.st_mode & S_IRGRP) != 0);
+    printf("Write: %d\n",(file.st_mode & S_IWGRP) != 0);
+    printf("Execute: %d\n",(file.st_mode & S_IXGRP) != 0);
+
+    printf("\nOthers Permissions:\n");
+    printf("Read: %d\n",(file.st_mode & S_IROTH) != 0);
+    printf("Write: %d\n",(file.st_mode & S_IWOTH) != 0);
+    printf("Execute: %d\n",(file.st_mode & S_IXOTH) != 0);
+
+    return 0;
+}
